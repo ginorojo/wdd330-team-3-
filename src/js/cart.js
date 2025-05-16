@@ -6,11 +6,13 @@ function renderCartContents() {
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
+// Adding a funtion to populate the cart with a template
+// This function will be used to create the HTML for each item in the cart
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
-      src="${item.Image}"
+      src="${item.Image}" 
       alt="${item.Name}"
     />
   </a>
