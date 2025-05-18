@@ -8,6 +8,7 @@ export default class ProductDetails {
     }
     
     async init() {
+      console.log("ID del producto:", this.productId) 
         this.product = await this.dataSource.findProductById(this.productId);
         this.renderProductDetails();
         document
@@ -17,6 +18,7 @@ export default class ProductDetails {
 
     addProductToCart() {
         const cartItems = getLocalStorage("so-cart") || [];
+        
         cartItems.push(this.product);
         setLocalStorage("so-cart", cartItems);
     }
@@ -27,6 +29,7 @@ export default class ProductDetails {
 }
 
 function productTemplate(product) {
+  
   document.querySelector("h2").textContent = product.Brand.Name;
   document.querySelector("h3").textContent = product.NameWithoutBrand;
 
