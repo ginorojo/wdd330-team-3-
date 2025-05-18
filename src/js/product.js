@@ -1,7 +1,10 @@
 import { setLocalStorage } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
+import ProductDetails from "./ProductList.mjs";
 
 const dataSource = new ProductData("tents");
+const productId = setLocalStorage("product");
+const Product = new ProductDetails(productId, dataSource);
 
 function addProductToCart(product) {
   setLocalStorage("so-cart", product);
@@ -16,3 +19,5 @@ async function addToCartHandler(e) {
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
+
+Product.init();
