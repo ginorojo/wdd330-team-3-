@@ -241,6 +241,18 @@ button {
   grid-column: 3;
 }
 
+.hide {
+  display: none;
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5em;
+  font-weight: bold;
+  font-size: var(--large-font);
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
