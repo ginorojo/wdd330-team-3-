@@ -1,6 +1,10 @@
 import { getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
 
 function renderCartContents() {
+  console.log("cart.js [renderCartContents] Start")
   // Ensuring the cart always returns an array to prevent errors when empty,The missing part was || []
   const cartItems = getLocalStorage("so-cart") || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
@@ -15,11 +19,13 @@ function renderCartContents() {
       document.querySelector(".cart-total").innerHTML = `Total: $${total}`;
     });
   }
+  console.log("cart.js [renderCartContents] End")
 }
 
 // Adding a funtion to populate the cart with a template
 // This function will be used to create the HTML for each item in the cart
 function cartItemTemplate(item) {
+  console.log("cart.js [cartItemTemplate] Start")
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
@@ -34,7 +40,7 @@ function cartItemTemplate(item) {
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
-
+console.log("cart.js [cartItemTemplate] End")
   return newItem;
 }
 
