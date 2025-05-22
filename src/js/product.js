@@ -8,6 +8,5 @@ const dataSource = new ProductData("tents");
 const productId = getParam("product");
 const Product = new ProductDetails(productId, dataSource);
 // initialize product details
-console.log("product.js is about to call productlist.init()")
 Product.init();
 loadHeaderFooter();
