@@ -1,4 +1,7 @@
 import { getLocalStorage } from "./utils.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
+
+loadHeaderFooter();
 
 function renderCartContents() {
   // Ensuring the cart always returns an array to prevent errors when empty,The missing part was || []
@@ -34,7 +37,6 @@ function cartItemTemplate(item) {
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
 </li>`;
-
   return newItem;
 }
 
