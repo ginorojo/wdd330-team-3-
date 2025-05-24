@@ -22,7 +22,7 @@ export function setClick(selector, callback) {
   qs(selector).addEventListener("click", callback);
 }
 
-// Getting the ID product of the URl string
+// get the product id from the query string
 export function getParam(param) {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -32,6 +32,7 @@ export function getParam(param) {
 
 export function renderListWithTemplate(template, parentElement, list, position = "afterbegin", clear = false) {
   const htmlStrings = list.map(template);
+  // if clear is true we need to clear out the contents of the parent.
   if (clear) {
     parentElement.innerHTML = "";
   }
@@ -46,17 +47,17 @@ export function renderWithTemplate(template, parentElement, data, callback) {
 }
 
 async function loadTemplate(path) {
-  const response = await fetch(path);
-  const template = await response.text();
+  const res = await fetch(path);
+  const template = await res.text();
   return template;
 }
 
 export async function loadHeaderFooter() {
-  const footerTemplate = await loadTemplate("../partials/footer.html");
   const headerTemplate = await loadTemplate("../partials/header.html");
+  const footerTemplate = await loadTemplate("../partials/footer.html");
 
-  const footerElement = document.querySelector("#main-footer");
   const headerElement = document.querySelector("#main-header");
+  const footerElement = document.querySelector("#main-footer");
 
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
