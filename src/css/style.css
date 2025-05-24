@@ -289,6 +289,22 @@ button {
   grid-column: 3;
 }
 
+.quantity-controls {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  justify-content: space-between;
+}
+
+.quantity-controls button {
+  padding: 0.25rem 0.5rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
