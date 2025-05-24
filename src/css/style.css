@@ -273,3 +273,21 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.product-listing-product-types{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    margin-top: 70px;
+}
+
+.product-listing-img-box{
+      width: 130px;
+  text-align: center;
+}
+
+.subtitle-categories{
+  color: black;
+  text-decoration: none;
+      font-weight: bold;
+} 

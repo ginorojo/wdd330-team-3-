@@ -4,8 +4,9 @@ import ProductDetails from "./ProductDetails.mjs";
 import { loadHeaderFooter } from "./utils.mjs";
 
 //Creting a new instance of the ProductData class
-const dataSource = new ProductData("tents");
+const category = getParam('category');
 const productId = getParam("product");
+const dataSource = new ProductData(category);
 const Product = new ProductDetails(productId, dataSource);
 // initialize product details
 Product.init();
