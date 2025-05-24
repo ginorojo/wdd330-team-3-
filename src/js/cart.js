@@ -14,7 +14,7 @@ function renderCartContents() {
     document.querySelector(".cart-footer").classList.remove("hide");
 
     cartItems.forEach((item) => {
-      const quantity = item.quantity || 1
+      const quantity = item.quantity || 1;
       total += item.FinalPrice * quantity;
       document.querySelector(".cart-total").innerHTML = `Total: $${total}`;
     });
@@ -50,7 +50,6 @@ function cartItemTemplate(item) {
 renderCartContents();
 
 function attachButtonListeners() {
-
   document.querySelectorAll(".quantity-controls").forEach((control) => {
     const id = control.dataset.id;
     const increaseBtn = control.querySelector(".increase-qty");
@@ -78,5 +77,5 @@ function updateQuantity(id, change) {
   });
 
   localStorage.setItem("so-cart", JSON.stringify(cartItems));
-  renderCartContents(); 
+  renderCartContents();
 }
