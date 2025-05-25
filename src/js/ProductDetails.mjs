@@ -48,6 +48,13 @@ function productTemplate(product) {
   document.getElementById("productPrice").textContent = `$${product.FinalPrice}`;
   document.getElementById("productColor").textContent = `Color: ${product.Colors[0].ColorName}`;
   document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
+  
+  if (product.FinalPrice < product.SuggestedRetailPrice){
+    let discount = Math.round(product.SuggestedRetailPrice - product.FinalPrice, 1)
+    document.getElementById("poduct-discount").innerHTML = `Discount: $${discount}`;
+  }
+
+  
 
   document.getElementById("addToCart").dataset.id = product.Id;
 }
