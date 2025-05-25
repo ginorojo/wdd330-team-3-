@@ -1,5 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
-import { loadHeaderFooter } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -14,11 +13,13 @@ function renderCartContents() {
     document.querySelector(".cart-footer").classList.remove("hide");
 
     cartItems.forEach((item) => {
-      const quantity = item.quantity
+      const quantity = item.quantity;
       total += item.FinalPrice * quantity;
-      document.querySelector(".cart-total").innerHTML = `Total: $${total}`;
+      document.querySelector(".cart-total").innerHTML =
+        `Total: $${total.toFixed(2)}`;
     });
-    attachButtonListeners()
+    attachButtonListeners();
+    attachRemoveListeners();
   }
 }
 
@@ -28,8 +29,9 @@ function cartItemTemplate(item) {
   const quantity = item.quantity || 1;
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
-    <img
-      src="${item.Images.PrimarySmall}" 
+  <span data-id="${item.Id}"><img src="../images/icon-remove.png" id="remove-icon" title="Remove Item"></img></span>  
+  <img
+      src="${item.Images.PrimaryMedium}" 
       alt="${item.Name}"
     />
   </a>
@@ -42,12 +44,10 @@ function cartItemTemplate(item) {
     <span class="quantity-value">${quantity}</span>
     <button class="increase-qty">+</button>
   </div>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
+  <p class="cart-card__price">$${(item.FinalPrice * quantity).toFixed(2)}</p>
 </li>`;
   return newItem;
 }
-
-// const CartTotal = document.querySelector(".cart-footer");
 
 renderCartContents();
 
@@ -73,6 +73,7 @@ function updateQuantity(id, change) {
     if (item.Id === id) {
       let newQty = (item.quantity || 1) + change;
       if (newQty < 1) newQty = 1;
+
       return { ...item, quantity: newQty };
     }
     return item;
@@ -80,4 +81,27 @@ function updateQuantity(id, change) {
 
   localStorage.setItem("so-cart", JSON.stringify(cartItems));
   renderCartContents();
+}
+function attachRemoveListeners() {
+  const removeIcons = document.querySelectorAll("#remove-icon");
+  removeIcons.forEach((icon) => {
+    icon.addEventListener("click", (event) => {
+      event.preventDefault();
+      const itemId = event.target.parentElement.dataset.id;
+      removeItemFromCart(itemId);
+    });
+  });
+}
+
+function removeItemFromCart(itemId) {
+  let cartItems = getLocalStorage("so-cart") || [];
+  cartItems = cartItems.filter((item) => item.Id !== itemId);
+
+  localStorage.setItem("so-cart", JSON.stringify(cartItems));
+  renderCartContents();
+  if (cartItems.length === 0) {
+    document.querySelector(".cart-footer").classList.add("hide");
+    document.querySelector(".product-list").innerHTML =
+      "<p>Your cart is empty.</p>";
+  }
 }
