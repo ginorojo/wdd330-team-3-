@@ -29,7 +29,7 @@ function cartItemTemplate(item) {
   const quantity = item.quantity || 1;
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
-  <span data-id="${item.Id}"><img src="../images/icon-remove.png" id="remove-icon" title="Remove Item"></img></span>  
+  <span data-id="${item.Id}"><img src="/images/logos/icon-remove.png" id="remove-icon" title="Remove Item"></img></span>  
   <img
       src="${item.Images.PrimaryMedium}" 
       alt="${item.Name}"
