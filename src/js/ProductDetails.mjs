@@ -1,4 +1,5 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+// import { updateQuantity } from "./cart";
 
 export default class ProductDetails {
     constructor(productId, dataSource) {
@@ -45,11 +46,14 @@ function productTemplate(product) {
   productImg.src = product.Images.PrimaryExtraLarge;
   productImg.alt = product.NameWithoutBrand;
 
-  document.getElementById("productPrice").textContent = `$${product.FinalPrice}`;
+//   document.getElementById("productPrice").textContent = `$${product.FinalPrice}`;
+  // Update final price if there are more item in the cart
+  
+
   document.getElementById("productColor").textContent = `Color: ${product.Colors[0].ColorName}`;
   document.getElementById("productDesc").innerHTML = product.DescriptionHtmlSimple;
   
-  if (product.FinalPrice < product.SuggestedRetailPrice){
+  if (product.FinalPrice < product.SuggestedRetailPrice) {
     let discount = Math.round(product.SuggestedRetailPrice - product.FinalPrice, 1)
     document.getElementById("poduct-discount").innerHTML = `Discount: $${discount}`;
   }
