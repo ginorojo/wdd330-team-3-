@@ -1,4 +1,4 @@
-import { getLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import { getLocalStorage, loadHeaderFooter, getTotalPrice } from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -16,7 +16,7 @@ function renderCartContents() {
       const quantity = item.quantity;
       total += item.FinalPrice * quantity;
       document.querySelector(".cart-total").innerHTML =
-        `Total: $${total.toFixed(2)}`;
+        `Total: $${getTotalPrice()}`;
     });
     attachButtonListeners();
     attachRemoveListeners();

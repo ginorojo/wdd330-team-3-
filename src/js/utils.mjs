@@ -61,3 +61,18 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
+
+
+export function getTotalPrice() {
+  const cartItems = JSON.parse(localStorage.getItem("so-cart")) || [];
+  let total = 0;
+  
+  if (cartItems.length > 0) {
+      cartItems.forEach((item) => {
+      const quantity = item.quantity || 1;
+      total += item.FinalPrice * quantity;
+      });
+  }
+  
+  return total.toFixed(2);
+}
