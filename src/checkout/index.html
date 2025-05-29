@@ -23,51 +23,123 @@
         <fieldset>
           <legend>Customer Information</legend>
           <label for="fName">First Name</label>
-          <input type="text" name="fName" placeholder="First Name" id="fName" required />
+          <input
+            type="text"
+            name="fName"
+            placeholder="First Name"
+            id="fName"
+            required
+          />
           <label for="lName">Last Name</label>
-          <input type="text" name="lName" placeholder="Last Name" id="lName" required />
+          <input
+            type="text"
+            name="lName"
+            placeholder="Last Name"
+            id="lName"
+            required
+          />
         </fieldset>
-      
+
         <fieldset>
           <legend>Address Information</legend>
           <label for="street">Street Address</label>
-          <input type="text" name="street" placeholder="Address" id="street" required />
+          <input
+            type="text"
+            name="street"
+            placeholder="Address"
+            id="street"
+            required
+          />
           <label for="city">City</label>
-          <input type="text" name="city" placeholder="City" id="city" required />
+          <input
+            type="text"
+            name="city"
+            placeholder="City"
+            id="city"
+            required
+          />
           <label for="state">State</label>
-          <input type="text" name="state" placeholder="State" id="state" required />
+          <input
+            type="text"
+            name="state"
+            placeholder="State"
+            id="state"
+            required
+          />
           <label for="zip">Zip Code</label>
-          <input type="text" name="zip" placeholder="Zip Code" id="zip" required />
+          <input
+            type="text"
+            name="zip"
+            placeholder="Zip Code"
+            id="zip"
+            required
+          />
         </fieldset>
-      
+
         <fieldset>
           <legend>Payment</legend>
           <label for="cardNumber">Card Number</label>
-          <input type="text" name="cardNumber" placeholder="Card Number" id="cardNumber" required />
+          <input
+            type="text"
+            name="cardNumber"
+            placeholder="Card Number"
+            id="cardNumber"
+            required
+          />
           <label for="expiration">Expiration Date</label>
-          <input type="text" name="expiration" placeholder="MM/YY" id="expiration" pattern="^(0[1-9]|1[0-2])\/\d{2}$" required />
+          <input
+            type="text"
+            name="expiration"
+            placeholder="MM/YY"
+            id="expiration"
+            pattern="^(0[1-9]|1[0-2])\/\d{2}$"
+            required
+          />
           <label for="code">CVV</label>
-          <input type="text" name="code" placeholder="CVV" id="code" pattern="[0-9]{3}" required />
+          <input
+            type="text"
+            name="code"
+            placeholder="CVV"
+            id="code"
+            pattern="[0-9]{3}"
+            required
+          />
         </fieldset>
-      
+
         <button type="submit" id="checkout-btn">Place Order</button>
       </form>
 
       <fieldset class="order-summary">
         <legend>Order Summary</legend>
         <label for="subtotal">Subtotal: </label>
-        <input type="text" id="subtotal" name="subtotal" value="$0.00" readonly />
-        
+        <input
+          type="text"
+          id="subtotal"
+          name="subtotal"
+          value="$0.00"
+          readonly
+        />
+
         <label for="tax">Taxes: </label>
         <input type="text" id="tax" name="tax" value="$0.00" readonly />
         <label for="shipEstimate">Shipping Estimate: </label>
-        <input type="text" id="shipEstimate" name="shipEstimate" value="$0.00" readonly />
+        <input
+          type="text"
+          id="shipEstimate"
+          name="shipEstimate"
+          value="$0.00"
+          readonly
+        />
         <label for="totalOrder">Total Order: </label>
-        <input type="text" name="totalOrder" id="totalOrder" value="$0.00" readonly />
+        <input
+          type="text"
+          name="totalOrder"
+          id="totalOrder"
+          value="$0.00"
+          readonly
+        />
         <div>Items in the Cart: <span id="totalItems"></span></div>
-        
       </fieldset>
-      
     </main>
 
     <footer id="main-footer"></footer>

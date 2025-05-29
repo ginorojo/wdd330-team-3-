@@ -7,17 +7,12 @@ function renderCartContents() {
   const cartItems = getLocalStorage("so-cart") || [];
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-  let total = 0;
 
   if (cartItems.length > 0) {
     document.querySelector(".cart-footer").classList.remove("hide");
+    document.querySelector(".cart-total").innerHTML =
+      `Total: $${getTotalPrice()}`;
 
-    cartItems.forEach((item) => {
-      const quantity = item.quantity;
-      total += item.FinalPrice * quantity;
-      document.querySelector(".cart-total").innerHTML =
-        `Total: $${getTotalPrice()}`;
-    });
     attachButtonListeners();
     attachRemoveListeners();
   }
