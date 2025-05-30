@@ -30,6 +30,10 @@ img {
   max-width: 100%;
 }
 
+.cart-footer a {
+  text-decoration: none;
+}
+
 header {
   display: flex;
   justify-content: space-between;
