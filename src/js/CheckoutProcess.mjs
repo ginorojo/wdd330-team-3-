@@ -66,8 +66,8 @@ export default class CheckoutProcess {
   
     calculateOrderTotal() {
       // calculate the tax and shipping amounts. Add those to the cart total to figure out the order total
-        this.tax = (this.itemTotal * 0.06).toFixed(2);
-        this.shipping = (10 + (this.itemCount - 1) * 2).toFixed(2) || 10;
+        this.tax = (this.itemTotal * 0.06);
+        this.shipping = (10 + (this.itemCount - 1) * 2) || 10;
         this.orderTotal = parseFloat(this.itemTotal) + parseFloat(this.tax) + parseFloat(this.shipping);
         
 
@@ -81,8 +81,8 @@ export default class CheckoutProcess {
         const shipping = document.querySelector(`${this.outputSelector} #shipEstimate`);
         const totalOrder = document.querySelector(`${this.outputSelector} #totalOrder`);
   
-        tax.value = `$${this.tax}`;
-        shipping.value = `$${this.shipping}`;
+        tax.value = `$${this.tax.toFixed(2)}`;
+        shipping.value = `$${this.shipping.toFixed(2)}`;
         totalOrder.value = `$${this.orderTotal.toFixed(2)}`;
     }
 
