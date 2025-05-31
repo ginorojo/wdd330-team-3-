@@ -2,16 +2,19 @@ import { loadHeaderFooter } from "./utils.mjs";
 import CheckoutProcess from "./CheckoutProcess.mjs";
 
 loadHeaderFooter();
+
 const order = new CheckoutProcess("so-cart", ".order-summary");
 order.init();
 
-// Add an event listener to the form when user change de zip code
-document
-  .getElementById("zip")
-  .addEventListener("change", order.calculateOrderTotal.bind(order));
+const myCheckout = new CheckoutProcess("so-cart", ".checkout-summary");
+myCheckout.init();
 
-// Add an event listener to the form submit button
-document.getElementById("checkout-btn").addEventListener("click", (event) => {
-  event.preventDefault();
-  order.checkout();
+document
+  .querySelector("#zip")
+  .addEventListener("blur", myCheckout.calculateOrdertotal.bind(myCheckout));
+// listening for click on the button
+document.querySelector("#checkoutSubmit").addEventListener("click", (e) => {
+  e.preventDefault();
+
+  myCheckout.checkout();
 });

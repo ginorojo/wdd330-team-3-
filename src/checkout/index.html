@@ -1,139 +1,76 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sleep Outside | Checkout</title>
+  <link rel="stylesheet" href="../css/style.css" />
+  <script src="../js/checkout.js" type="module"></script>
+</head>
 
-    <title>Sleep Outside | Checkout</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <script src="../js/checkout.js" type="module"></script>
-  </head>
-
-  <body>
-    <header class="divider" id="main-header"></header>
-
-    <main class="divider">
-      <section class="products">
-        <h2>Review & Place your Order</h2>
-      </section>
-
-      <form name="checkoutForm">
+<body>
+  <header class="divider" id="main-header"></header>
+  <main class="divider checkout">
+    <h2>Review & Place your Order</h2>
+    <section class="checkout-form">
+      <form name="checkout" action="./success.html">
         <fieldset>
-          <legend>Customer Information</legend>
-          <label for="fname">First Name</label>
-          <input
-            type="text"
-            name="fname"
-            placeholder="First Name"
-            id="fname"
-            required
-          />
-          <label for="lname">Last Name</label>
-          <input
-            type="text"
-            name="lname"
-            placeholder="Last Name"
-            id="lname"
-            required
-          />
-        </fieldset>
-
-        <fieldset>
-          <legend>Address Information</legend>
-          <label for="street">Street Address</label>
-          <input
-            type="text"
-            name="street"
-            placeholder="Address"
-            id="street"
-            required
-          />
-          <label for="city">City</label>
-          <input
-            type="text"
-            name="city"
-            placeholder="City"
-            id="city"
-            required
-          />
-          <label for="state">State</label>
-          <input
-            type="text"
-            name="state"
-            placeholder="State"
-            id="state"
-            required
-          />
-          <label for="zip">Zip Code</label>
-          <input
-            type="text"
-            name="zip"
-            placeholder="Zip Code"
-            id="zip"
-            required
-          />
+          <legend>Shipping</legend>
+          <div class="checkout__name">
+            <label for="fname">First Name</label>
+            <input name="fname" required />
+            <label for="lname">Last Name</label>
+            <input name="lname" required />
+          </div>
+          <div class="checkout__address">
+            <label for="street">Street</label>
+            <input name="street" required />
+            <label for="city">City</label>
+            <input name="city" required />
+            <label for="state">State</label>
+            <input name="state" required />
+            <label for="zip">Zip</label>
+            <input name="zip" id="zip" required />
+          </div>
         </fieldset>
 
         <fieldset>
           <legend>Payment</legend>
-          <label for="cardNumber">Card Number</label>
-          <input
-            type="text"
-            name="cardNumber"
-            placeholder="Card Number"
-            id="cardNumber"
-            required
-          />
-          <label for="expiration">Expiration Date</label>
-          <input
-            type="text"
-            name="expiration"
-            placeholder="MM/YY"
-            id="expiration"
-            required
-          />
-          <label for="code">CVV</label>
-          <input type="text" name="code" placeholder="CVV" id="code" required />
+          <label for="cardNumber">Card number</label>
+          <input name="cardNumber" required />
+          <label for="expiration">Expiration</label>
+          <input name="expiration" required />
+          <label for="code">Security Code</label>
+          <input name="code" required />
+        </fieldset>
+        <fieldset class="checkout-summary">
+          <legend>Order Summary</legend>
+          <ul>
+            <li>
+              <label for="cartTotal">Item Subtotal(<span id="num-items"></span>)</label>
+              <p name="cartTotal" id="cartTotal"></p>
+            </li>
+            <li>
+              <label for="shipping">Shipping Estimate</label>
+              <p id="shipping"></p>
+            </li>
+            <li>
+              <label for="tax">Tax</label>
+              <p id="tax"></p>
+            </li>
+            <li>
+              <label for="orderTotal"><b>Order Total</b></label>
+              <p id="orderTotal"></p>
+            </li>
+          </ul>
         </fieldset>
 
-        <button type="submit" id="checkout-btn">Place Order</button>
+        <button id="checkoutSubmit" type="submit">Checkout</button>
       </form>
+    </section>
+  </main>
+  <footer id="main-footer"></footer>
+</body>
 
-      <fieldset class="order-summary">
-        <legend>Order Summary</legend>
-        <label for="subtotal">Subtotal: </label>
-        <input
-          type="text"
-          id="subtotal"
-          name="subtotal"
-          value="$0.00"
-          readonly
-        />
-
-        <label for="tax">Taxes: </label>
-        <input type="text" id="tax" name="tax" value="$0.00" readonly />
-        <label for="shipEstimate">Shipping Estimate: </label>
-        <input
-          type="text"
-          id="shipEstimate"
-          name="shipEstimate"
-          value="$0.00"
-          readonly
-        />
-        <label for="totalOrder">Total Order: </label>
-        <input
-          type="text"
-          name="totalOrder"
-          id="totalOrder"
-          value="$0.00"
-          readonly
-        />
-        <div>Items in the Cart: <span id="totalItems"></span></div>
-      </fieldset>
-    </main>
-
-    <footer id="main-footer"></footer>
-  </body>
 </html>
