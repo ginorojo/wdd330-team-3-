@@ -13,5 +13,10 @@ document
 // Add an event listener to the form submit button
 document.getElementById("checkout-btn").addEventListener("click", (event) => {
   event.preventDefault();
-  order.checkout();
+  const myForm = document.forms[0];
+  const status = myForm.checkValidity();
+  myForm.reportValidity();
+  if (status) {
+    order.checkout();
+  }
 });
