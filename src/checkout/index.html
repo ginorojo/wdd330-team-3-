@@ -84,6 +84,7 @@
             name="cardNumber"
             placeholder="Card Number"
             id="cardNumber"
+            pattern="\d{16}$"
             required
           />
           <label for="expiration">Expiration Date</label>
@@ -92,46 +93,53 @@
             name="expiration"
             placeholder="MM/YY"
             id="expiration"
+            pattern="^(0[1-9]|1[0-2])\/\d{2}$"
             required
           />
           <label for="code">CVV</label>
-          <input type="text" name="code" placeholder="CVV" id="code" required />
+          <input
+            type="text"
+            name="code"
+            placeholder="CVV"
+            id="code"
+            pattern="\d{3}$"
+            required
+          />
         </fieldset>
 
+        <fieldset class="order-summary">
+          <legend>Order Summary</legend>
+          <label for="subtotal">Subtotal: </label>
+          <input
+            type="text"
+            id="subtotal"
+            name="subtotal"
+            value="$0.00"
+            readonly
+          />
+
+          <label for="tax">Taxes: </label>
+          <input type="text" id="tax" name="tax" value="$0.00" readonly />
+          <label for="shipEstimate">Shipping Estimate: </label>
+          <input
+            type="text"
+            id="shipEstimate"
+            name="shipEstimate"
+            value="$0.00"
+            readonly
+          />
+          <label for="totalOrder">Total Order: </label>
+          <input
+            type="text"
+            name="totalOrder"
+            id="totalOrder"
+            value="$0.00"
+            readonly
+          />
+          <div>Items in the Cart: <span id="totalItems"></span></div>
+        </fieldset>
         <button type="submit" id="checkout-btn">Place Order</button>
       </form>
-
-      <fieldset class="order-summary">
-        <legend>Order Summary</legend>
-        <label for="subtotal">Subtotal: </label>
-        <input
-          type="text"
-          id="subtotal"
-          name="subtotal"
-          value="$0.00"
-          readonly
-        />
-
-        <label for="tax">Taxes: </label>
-        <input type="text" id="tax" name="tax" value="$0.00" readonly />
-        <label for="shipEstimate">Shipping Estimate: </label>
-        <input
-          type="text"
-          id="shipEstimate"
-          name="shipEstimate"
-          value="$0.00"
-          readonly
-        />
-        <label for="totalOrder">Total Order: </label>
-        <input
-          type="text"
-          name="totalOrder"
-          id="totalOrder"
-          value="$0.00"
-          readonly
-        />
-        <div>Items in the Cart: <span id="totalItems"></span></div>
-      </fieldset>
     </main>
 
     <footer id="main-footer"></footer>

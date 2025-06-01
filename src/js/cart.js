@@ -1,4 +1,9 @@
-import { getLocalStorage, loadHeaderFooter, getTotalPrice } from "./utils.mjs";
+import {
+  getLocalStorage,
+  loadHeaderFooter,
+  getTotalPrice,
+  updateCartCount,
+} from "./utils.mjs";
 
 loadHeaderFooter();
 
@@ -54,10 +59,12 @@ function attachButtonListeners() {
 
     increaseBtn.addEventListener("click", () => {
       updateQuantity(id, 1);
+      updateCartCount();
     });
 
     decreaseBtn.addEventListener("click", () => {
       updateQuantity(id, -1);
+      updateCartCount();
     });
   });
 }
@@ -94,9 +101,11 @@ function removeItemFromCart(itemId) {
 
   localStorage.setItem("so-cart", JSON.stringify(cartItems));
   renderCartContents();
+  updateCartCount();
   if (cartItems.length === 0) {
     document.querySelector(".cart-footer").classList.add("hide");
     document.querySelector(".product-list").innerHTML =
       "<p>Your cart is empty.</p>";
+    updateCartCount();
   }
 }
