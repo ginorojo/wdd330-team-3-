@@ -1,4 +1,5 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, getParam } from "./utils.mjs";
+import ExternalServices from "./ExternalServices.mjs";
 
 function productCardTemplate(product) {
   let discount = 0
@@ -28,9 +29,18 @@ export default class ProductList {
     }
 
     async init() {
-        const list = await this.dataSource.getData(this.category);
-        this.renderList(list);
-        document.querySelector(".title").textContent = this.category;
+      const list = await this.dataSource.getData(this.category);
+      this.renderList(list);
+      document.querySelector(".title").textContent = this.category;
+      const searchBar = document.getElementById("search-bar")
+      searchBar.addEventListener("click", this.renderSearchedList)
+    }
+
+    async renderSearchedList(){
+      const category = getParam("category");
+      const searchString = document.getElementById("search-input").value
+      const list = await new ExternalServices().findProductByName(searchString, category)
+      renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
 
     renderList(list) {
