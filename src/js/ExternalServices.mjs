@@ -30,7 +30,8 @@ export default class ExternalServices {
   async findProductByName(searchString, category){
     const response = await fetch(`${baseURL}products/search/${category}`);
     const data = await convertToJson(response);
-    return await data.Result.filter(e => e.NameWithoutBrand.includes(searchString));
+    const result = await data.Result.filter(e => e.NameWithoutBrand.toLowerCase().includes(searchString));
+    return result
   }
 
   async checkout(payload) {

@@ -38,9 +38,10 @@ export default class ProductList {
 
     async renderSearchedList(){
       const category = getParam("category");
+      const element = document.querySelector(".product-list");
       const searchString = document.getElementById("search-input").value
       const list = await new ExternalServices().findProductByName(searchString, category)
-      renderListWithTemplate(productCardTemplate, this.listElement, list);
+      renderListWithTemplate(productCardTemplate, element, list);
     }
 
     renderList(list) {
